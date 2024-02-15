@@ -117,5 +117,5 @@ export const fbAuth = async (userID) => {
         throw new Error(data.message);
       }
     })
-    .catch((err) => alert("Error while signing in  :", err));
+    .catch((err) => console.log(err));
 };
