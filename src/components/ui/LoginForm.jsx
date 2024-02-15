@@ -8,7 +8,7 @@ export default function Loginform() {
 
   function handleSuccess(response) {
     console.log(response);
-    const { accessToken, expiresIn, userID } = response;
+    const { accessToken, expiresIn, userID } = response.authResponse;
     FBAuth({ accessToken, expiresIn, userID });
   }
   const FBAuth = async (response) => {
