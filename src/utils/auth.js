@@ -100,7 +100,7 @@ export const signout = () => {
 
 // fb auth
 export const fbAuth = async (userID) => {
-  return await fetch("http://localhost:3000/auth/fbAuth", {
+  return await fetch("http://localhost:3000/auth/fbauth", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
