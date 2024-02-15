@@ -12,6 +12,8 @@ export default function Loginform() {
     setAuthResponse(response.authResponse);
   }
   useEffect(() => {
+    if (authResponse == {}) return;
+
     const FBAuth = async (response) => {
       await fbAuth(response.userID).then((data) => {
         if (data.message === "success") {
