@@ -1,13 +1,19 @@
 import { signin } from "../../utils/auth";
 import { useEffect, useState } from "react";
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-const responseFacebook = (response) => {
-  console.log(response);
-};
+import { FacebookProvider, LoginButton } from "react-facebook";
 
 export default function Loginform() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
+  function handleSuccess(response) {
+    console.log(response.status);
+  }
+
+  function handleError(error) {
+    console.log(error);
+  }
+
   async function handleLogin(e) {
     e.preventDefault();
     const email = document.getElementById("email").value;
@@ -88,7 +94,7 @@ export default function Loginform() {
           </div>
         </form>
         <div className="w-full">
-          <FacebookLogin
+          {/* <FacebookLogin
             appId="1266490200974265"
             autoLoad={true}
             // fields="name,email,picture"
@@ -102,7 +108,16 @@ export default function Loginform() {
                 Login Using FB
               </button>
             )}
-          />
+          /> */}
+          <FacebookProvider appId="1266490200974265">
+            <LoginButton
+              scope="email"
+              onError={handleError}
+              onSuccess={handleSuccess}
+            >
+              Login via Facebook
+            </LoginButton>
+          </FacebookProvider>
         </div>
         <p className="text-[12px] font-medium">
           New to MyApp?{" "}
