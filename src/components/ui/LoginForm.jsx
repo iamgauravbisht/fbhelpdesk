@@ -7,7 +7,7 @@ export default function Loginform() {
   const [passwordError, setPasswordError] = useState("");
 
   function handleSuccess(response) {
-    console.log(response.status);
+    console.log(response);
   }
 
   function handleError(error) {
