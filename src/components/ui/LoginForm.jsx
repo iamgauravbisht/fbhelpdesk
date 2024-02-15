@@ -1,8 +1,6 @@
-import { signin } from "../../utils/auth";
 import { useEffect, useState } from "react";
 import { FacebookProvider, LoginButton } from "react-facebook";
-import { fbAuth } from "../../utils/auth";
-import { setCookie } from "../../utils/cookie";
+import { fbAuth, signin, setCookie } from "../../utils/auth";
 
 export default function Loginform() {
   const [emailError, setEmailError] = useState("");
