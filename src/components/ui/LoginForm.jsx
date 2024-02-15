@@ -6,13 +6,15 @@ export default function Loginform() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  async function handleSuccess(response) {
-    await fbAuth(response.userID).then((data) => {
-      if (data.message === "success") {
-        setCookie("fbtoken", response.accessToken, response.expiresIn);
-        window.location.href = "/dashboard";
-      }
-    });
+  function handleSuccess(response) {
+    async () => {
+      await fbAuth(response.userID).then((data) => {
+        if (data.message === "success") {
+          setCookie("fbtoken", response.accessToken, response.expiresIn);
+          window.location.href = "/dashboard";
+        }
+      });
+    };
   }
 
   function handleError(error) {
