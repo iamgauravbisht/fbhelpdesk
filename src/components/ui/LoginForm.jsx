@@ -114,6 +114,7 @@ export default function Loginform() {
               scope="email"
               onError={handleError}
               onSuccess={handleSuccess}
+              className="bg-blue-800 text-white w-full py-2 font-semibold text-sm rounded-md hover:bg-blue-900"
             >
               Login via Facebook
             </LoginButton>
