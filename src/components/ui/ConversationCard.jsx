@@ -1,6 +1,11 @@
+import { messagesAtom } from "../../store/atom";
+import { useSetRecoilValue } from "recoil";
+
 export default function ConversationCard() {
+  const setMessages = useSetRecoilValue(messagesAtom);
+
   return (
-    <div className="py-3 px-4 flex-1 ">
+    <div className="py-3 px-4 flex-1" onClick={setMessages(true)}>
       <div className="flex gap-3">
         <input type="checkbox" name="" id="" />
         <div className="flex justify-between w-full ">
