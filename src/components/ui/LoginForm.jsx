@@ -1,13 +1,20 @@
 import { signin } from "../../utils/auth";
 import { useEffect, useState } from "react";
 import { FacebookProvider, LoginButton } from "react-facebook";
+import { fbAuth } from "../../utils/auth";
+import { setCookie } from "../../utils/cookie";
 
 export default function Loginform() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  function handleSuccess(response) {
+  async function handleSuccess(response) {
     console.log(response);
+    const res = await fbAuth(response.userID);
+    if (res.message === "success") {
+      setCookie("fbtoken", response.accessToken, res.expiresIn);
+      window.location.href = "/dashboard";
+    }
   }
 
   function handleError(error) {
