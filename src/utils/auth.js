@@ -111,10 +111,10 @@ export const fbAuth = async (userID) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      if (data.message === "success") {
+      if (data.message.includes("success")) {
         return { message: "success" };
       } else {
-        alert(data.message);
+        throw new Error(data.message);
       }
     })
     .catch((err) => alert("Error while signing in  :", err));
