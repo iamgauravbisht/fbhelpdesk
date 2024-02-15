@@ -7,6 +7,7 @@ export default function Loginform() {
   const [passwordError, setPasswordError] = useState("");
 
   function handleSuccess(response) {
+    console.log(response);
     const { accessToken, expiresIn, userID } = response;
     FBAuth({ accessToken, expiresIn, userID });
   }
