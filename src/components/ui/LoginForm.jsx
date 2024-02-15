@@ -7,15 +7,17 @@ export default function Loginform() {
   const [passwordError, setPasswordError] = useState("");
 
   function handleSuccess(response) {
-    async () => {
-      await fbAuth(response.userID).then((data) => {
-        if (data.message === "success") {
-          setCookie("fbtoken", response.accessToken, response.expiresIn);
-          window.location.href = "/dashboard";
-        }
-      });
-    };
+    const { accessToken, expiresIn, userID } = response;
+    FBAuth({ accessToken, expiresIn, userID });
   }
+  const FBAuth = async (response) => {
+    await fbAuth(response.userID).then((data) => {
+      if (data.message === "success") {
+        setCookie("fbtoken", response.accessToken, response.expiresIn);
+        window.location.href = "/dashboard";
+      }
+    });
+  };
 
   function handleError(error) {
     console.log(error);
