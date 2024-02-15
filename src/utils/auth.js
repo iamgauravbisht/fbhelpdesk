@@ -60,7 +60,7 @@ export const signup = async (username, email, password) => {
         return handleError(data.message);
       }
     })
-    .catch((err) => alert("Error while signing up  :", err));
+    .catch((err) => console.log(err));
 };
 export const signin = async (email, password) => {
   return await fetch("http://localhost:3000/auth/signin", {
@@ -83,7 +83,7 @@ export const signin = async (email, password) => {
         return { message: "success" };
       }
     })
-    .catch((err) => alert("Error while signing in  :", err));
+    .catch((err) => console.log(err));
 };
 
 export const signout = () => {
