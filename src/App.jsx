@@ -2,7 +2,9 @@ import ConnectFBPage from "./components/ui/ConnectFBPage";
 import DisconnectFBPage from "./components/ui/DisconnectFBPage";
 import SignupForm from "./components/ui/SignupForm";
 import LoginForm from "./components/ui/LoginForm";
-import AgentScreen from "./components/AgentScreen";
+import FBLogin from "./components/ui/FBLogin";
+// import AgentScreen from "./components/AgentScreen";
+import Dashboard from "./components/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 
@@ -16,8 +18,8 @@ function App() {
           <Route path="/signin" element={<LoginForm />} />
           <Route path="/connectfbpage" element={<ConnectFBPage />} />
           <Route path="/disconnectpage" element={<DisconnectFBPage />} />
-          <Route path="/agentscreen" element={<AgentScreen />} />
-          <Route path="/dashboard" element={<AgentScreen />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/FBLogin" element={<FBLogin />} />
         </Routes>
       </BrowserRouter>
     </RecoilRoot>

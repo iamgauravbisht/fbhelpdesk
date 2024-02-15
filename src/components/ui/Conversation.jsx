@@ -4,7 +4,7 @@ import ConversationCard from "./ConversationCard";
 
 export default function Conversation() {
   return (
-    <div className="flex flex-col min-w-[280px] max-w-[640px] md:max-w-[300px] h-full overflow-auto bg-gray-100 relative ">
+    <div className="flex-1 flex flex-col min-w-[280px] sm:max-w-[640px] md:max-w-[300px] h-full overflow-y-scroll bg-gray-100 relative ">
       <div className="flex justify-between items-center  bg-white py-5 px-4 shadow-lg sticky top-0 z-10">
         <div className="flex items-center gap-2 justify-center">
           <img src={menu} alt="menu" className="cursor-pointer" />

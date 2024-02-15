@@ -1,6 +1,6 @@
 export default function ConversationCard() {
   return (
-    <div className="py-3 px-4 ">
+    <div className="py-3 px-4 flex-1 ">
       <div className="flex gap-3">
         <input type="checkbox" name="" id="" />
         <div className="flex justify-between w-full ">

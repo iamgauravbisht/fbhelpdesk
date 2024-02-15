@@ -26,8 +26,14 @@ export default function SignupForm() {
   }
 
   useEffect(() => {
-    if (document.cookie.includes("token")) {
+    if (
+      document.cookie.includes("token") &&
+      document.cookie.includes("fbtoken")
+    ) {
       window.location.href = "/dashboard";
+    }
+    if (document.cookie.includes("token")) {
+      window.location.href = "/FBLogin";
     }
   }, []);
 

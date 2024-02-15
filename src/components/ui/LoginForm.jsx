@@ -38,7 +38,7 @@ export default function Loginform() {
     console.log(data);
 
     if (data.message === "success") {
-      window.location.href = "/dashboard";
+      window.location.href = "/FBLogin";
     }
     if (data.email || data.password) {
       setEmailError(data.email);
@@ -48,8 +48,14 @@ export default function Loginform() {
   }
 
   useEffect(() => {
-    if (document.cookie.includes("token")) {
+    if (
+      document.cookie.includes("token") &&
+      document.cookie.includes("fbtoken")
+    ) {
       window.location.href = "/dashboard";
+    }
+    if (document.cookie.includes("token")) {
+      window.location.href = "/FBLogin";
     }
   }, []);
 
