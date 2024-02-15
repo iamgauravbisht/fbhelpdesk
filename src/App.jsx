@@ -12,13 +12,16 @@ function App() {
     <RecoilRoot>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LoginForm />} />
-          <Route path="/signup" element={<SignupForm />} />
-          <Route path="/signin" element={<LoginForm />} />
-          <Route path="/connectfbpage" element={<ConnectFBPage />} />
-          <Route path="/disconnectpage" element={<DisconnectFBPage />} />
-          <Route path="/agentscreen" element={<AgentScreen />} />
-          <Route path="/dashboard" element={<AgentScreen />} />
+          <Route path="/fbhelpdesk" element={<LoginForm />} />
+          <Route path="/fbhelpdesk/signup" element={<SignupForm />} />
+          <Route path="/fbhelpdesk/signin" element={<LoginForm />} />
+          <Route path="/fbhelpdesk/connectfbpage" element={<ConnectFBPage />} />
+          <Route
+            path="/fbhelpdesk/disconnectpage"
+            element={<DisconnectFBPage />}
+          />
+          <Route path="/fbhelpdesk/agentscreen" element={<AgentScreen />} />
+          <Route path="/fbhelpdesk/dashboard" element={<AgentScreen />} />
         </Routes>
       </BrowserRouter>
     </RecoilRoot>
