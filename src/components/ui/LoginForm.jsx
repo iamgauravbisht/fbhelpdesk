@@ -94,21 +94,6 @@ export default function Loginform() {
           </div>
         </form>
         <div className="w-full">
-          {/* <FacebookLogin
-            appId="1266490200974265"
-            autoLoad={true}
-            // fields="name,email,picture"
-            callback={responseFacebook}
-            render={(renderProps) => (
-              <button
-                type="submit"
-                className="bg-blue-800 text-white w-full py-2 font-semibold text-sm rounded-md hover:bg-blue-900"
-                onClick={renderProps.onClick}
-              >
-                Login Using FB
-              </button>
-            )}
-          /> */}
           <FacebookProvider appId="1266490200974265">
             <LoginButton
               scope="email"

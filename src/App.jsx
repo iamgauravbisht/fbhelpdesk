@@ -1,4 +1,3 @@
-// import Authform from "./components/Authform";
 import ConnectFBPage from "./components/ui/ConnectFBPage";
 import DisconnectFBPage from "./components/ui/DisconnectFBPage";
 import SignupForm from "./components/ui/SignupForm";
