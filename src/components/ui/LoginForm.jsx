@@ -5,20 +5,24 @@ import { fbAuth, signin, setCookie } from "../../utils/auth";
 export default function Loginform() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [authResponse, setAuthResponse] = useState({});
 
   function handleSuccess(response) {
     console.log(response);
-    const { accessToken, expiresIn, userID } = response.authResponse;
-    FBAuth({ accessToken, expiresIn, userID });
+    setAuthResponse(response.authResponse);
   }
-  const FBAuth = async (response) => {
-    await fbAuth(response.userID).then((data) => {
-      if (data.message === "success") {
-        setCookie("fbtoken", response.accessToken, response.expiresIn);
-        window.location.href = "/dashboard";
-      }
-    });
-  };
+  useEffect(() => {
+    const FBAuth = async (response) => {
+      await fbAuth(response.userID).then((data) => {
+        if (data.message === "success") {
+          setCookie("fbtoken", response.accessToken, response.expiresIn);
+          window.location.href = "/dashboard";
+        }
+      });
+    };
+
+    FBAuth(authResponse);
+  }, [authResponse]);
 
   function handleError(error) {
     console.log(error);
