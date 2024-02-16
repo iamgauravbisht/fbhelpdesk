@@ -11,7 +11,7 @@ const fbtoken = getCookie("fbtoken");
 export default function ConnectFBPage() {
   const [fbPage, setFBPage] = useRecoilState(fbPageAtom);
   const setFBPageID = useSetRecoilState(fbPageIDAtom);
-  let userID = useRecoilValue(userIDAtom);
+  const userID = useRecoilValue(userIDAtom);
 
   const goToDisconnectFBPage = () => {
     window.location.href = "/disconnectfbpage";
@@ -22,7 +22,10 @@ export default function ConnectFBPage() {
 
   useEffect(() => {
     async function AllPages() {
-      const data = await showAllPages({ userID, access_token: fbtoken });
+      const data = await showAllPages({
+        userID: userID,
+        access_token: fbtoken,
+      });
       console.log(data);
       if (data.message === "success") {
         setFBPage(data.pageDetails);
