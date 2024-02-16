@@ -24,7 +24,7 @@ export default function ConnectFBPage() {
       });
       console.log(data);
       if (data.message === "success") {
-        dispatch({ type: "SET_FB_PAGES", payload: data.pageDetails });
+        dispatch({ type: "SET_FBPAGE", payload: data.pageDetails });
       }
     }
     AllPages();
@@ -40,7 +40,7 @@ export default function ConnectFBPage() {
                 className="bg-blue-800 text-sm text-white w-full py-2 rounded-md hover:bg-blue-900"
                 key={page.pageID}
                 onClick={() => {
-                  dispatch({ type: "SET_FB_PAGE_ID", payload: page.pageID });
+                  dispatch({ type: "SET_FBPAGEID", payload: page.pageID });
                   window.location.href = "/conversations";
                 }}
               >

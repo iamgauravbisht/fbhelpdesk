@@ -17,7 +17,7 @@ export default function FBLogin() {
     const FBAuth = async (response) => {
       await fbAuth(response.accessToken, response.userID).then((data) => {
         if (data.message === "success") {
-          dispatch({ type: "SET_USER_ID", payload: response.userID });
+          dispatch({ type: "SET_USERID", payload: response.userID });
           eraseCookie("fbtoken");
           setCookie("fbtoken", response.accessToken, response.expiresIn);
           window.location.href = "/dashboard";
