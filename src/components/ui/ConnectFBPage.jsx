@@ -29,6 +29,7 @@ export default function ConnectFBPage() {
     }
     AllPages();
   }, [dispatch, state.userID]);
+  console.log(state.userID, "userID");
 
   return (
     <div className="w-screen h-screen flex justify-center items-center bg-blue-800 ">
