@@ -117,7 +117,7 @@ export default function Loginform() {
           </div>
         </form>
         <div className="w-full">
-          <FacebookProvider appId="1266490200974265">
+          <FacebookProvider appId="381913067780369">
             <LoginButton
               scope={
                 "email public_profile pages_messaging pages_manage_metadata pages_read_engagement pages_read_user_content pages_manage_ads pages_show_list pages_user"
