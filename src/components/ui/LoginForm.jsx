@@ -56,7 +56,7 @@ export default function Loginform() {
     if (document.cookie.includes("token") && document.cookie.includes("fb")) {
       window.location.href = "/dashboard";
     }
-    if (!document.cookie.includes("fb")) {
+    if (document.cookie.includes("token") && !document.cookie.includes("fb")) {
       window.location.href = "/FBLogin";
     }
   }, []);
