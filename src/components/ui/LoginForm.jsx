@@ -118,7 +118,6 @@ export default function Loginform() {
         <div className="w-full">
           <FacebookProvider appId="1266490200974265">
             <LoginButton
-              scope="email"
               onError={handleError}
               onSuccess={handleSuccess}
               className="bg-blue-800 text-white w-full py-2 font-semibold text-sm rounded-md hover:bg-blue-900"

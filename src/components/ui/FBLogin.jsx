@@ -32,9 +32,8 @@ export default function FBLogin() {
       <div className="flex flex-col items-center gap-4 max-w-[350px] min-w-[280px] sm:w-full p-5 sm:p-10 rounded-xl bg-white">
         <h1 className="text-lg font-semibold ">Facebook Login Integration</h1>
         <div className="w-full">
-          <FacebookProvider appId="1266490200974265">
+          <FacebookProvider appId="381913067780369">
             <LoginButton
-              scope="email"
               onError={handleError}
               onSuccess={handleSuccess}
               className="bg-blue-800 text-white w-full py-2 font-semibold text-sm rounded-md hover:bg-blue-900"
