@@ -1,9 +1,12 @@
 import { FacebookProvider, LoginButton } from "react-facebook";
 import { fbAuth, setCookie, eraseCookie } from "../../utils/auth";
 import { useEffect, useState } from "react";
+import { userIDAtom } from "../../store/atom";
+import { useSetRecoilState } from "recoil";
 
 export default function FBLogin() {
   const [authResponse, setAuthResponse] = useState({});
+  const setUserID = useSetRecoilState(userIDAtom);
 
   function handleSuccess(response) {
     console.log(response);
@@ -15,14 +18,15 @@ export default function FBLogin() {
     const FBAuth = async (response) => {
       await fbAuth(response.accessToken, response.userID).then((data) => {
         if (data.message === "success") {
+          setUserID(response.userID);
           eraseCookie("fbtoken");
           setCookie("fbtoken", response.accessToken, response.expiresIn);
-          // window.location.href = "/dashboard";
+          window.location.href = "/dashboard";
         }
       });
     };
     FBAuth(authResponse);
-  }, [authResponse]);
+  }, [authResponse, setUserID]);
 
   function handleError(error) {
     console.log(error);

@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { FacebookProvider, LoginButton } from "react-facebook";
 import { fbAuth, signin, setCookie, eraseCookie } from "../../utils/auth";
+import { userIDAtom } from "../../store/atom";
+import { useSetRecoilState } from "recoil";
 
 export default function Loginform() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [authResponse, setAuthResponse] = useState({});
+  const setUserID = useSetRecoilState(userIDAtom);
 
   function handleSuccess(response) {
     console.log(response);
@@ -17,15 +20,16 @@ export default function Loginform() {
     const FBAuth = async (response) => {
       await fbAuth(response.accessToken, response.userID).then((data) => {
         if (data.message === "success") {
+          setUserID(response.userID);
           eraseCookie("fbtoken");
           setCookie("fbtoken", response.accessToken, response.expiresIn);
-          // window.location.href = "/dashboard";
+          window.location.href = "/dashboard";
         }
       });
     };
 
     FBAuth(authResponse);
-  }, [authResponse]);
+  }, [authResponse, setUserID]);
 
   function handleError(error) {
     console.log(error);

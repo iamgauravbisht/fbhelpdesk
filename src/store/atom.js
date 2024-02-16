@@ -14,3 +14,18 @@ export const profileAtom = atom({
   key: "profileAtom",
   default: false,
 });
+
+export const userIDAtom = atom({
+  key: "userIDAtom",
+  default: null,
+});
+
+export const fbPageAtom = atom({
+  key: "fbPageAtom",
+  default: [],
+});
+
+export const fbPageIDAtom = atom({
+  key: "fbPageIDAtom",
+  default: null,
+});
