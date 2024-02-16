@@ -9,7 +9,7 @@ export default function Loginform() {
   const [passwordError, setPasswordError] = useState("");
   const [authResponse, setAuthResponse] = useState({});
   const [userId, setUserId] = useState(null);
-  const setUserID = useSetRecoilState(userIDAtom);
+  const setUsersID = useSetRecoilState(userIDAtom);
 
   function handleSuccess(response) {
     console.log(response);
@@ -30,13 +30,13 @@ export default function Loginform() {
     };
 
     FBAuth(authResponse);
-  }, [authResponse, setUserID]);
+  }, [authResponse, setUserId]);
 
   useEffect(() => {
     if (userId) {
-      setUserID(userId);
+      setUsersID(userId);
     }
-  }, [setUserID, userId]);
+  }, [setUsersID, userId]);
 
   function handleError(error) {
     console.log(error);
