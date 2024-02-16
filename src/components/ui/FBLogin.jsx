@@ -34,6 +34,9 @@ export default function FBLogin() {
         <div className="w-full">
           <FacebookProvider appId="381913067780369">
             <LoginButton
+              scope={
+                "email public_profile pages_messaging pages_manage_metadata pages_read_engagement pages_read_user_content pages_manage_ads pages_show_list pages_user"
+              }
               onError={handleError}
               onSuccess={handleSuccess}
               className="bg-blue-800 text-white w-full py-2 font-semibold text-sm rounded-md hover:bg-blue-900"
