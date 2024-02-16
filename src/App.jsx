@@ -17,7 +17,7 @@ function App() {
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/signin" element={<LoginForm />} />
           <Route path="/connectfbpage" element={<ConnectFBPage />} />
-          <Route path="/disconnectpage" element={<DisconnectFBPage />} />
+          <Route path="/disconnectfbpage" element={<DisconnectFBPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/FBLogin" element={<FBLogin />} />
         </Routes>
