@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { showAllPages } from "../../utils/page";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { fbPageAtom, fbPageIDAtom } from "../../store/atom";
-import { userIDAtom } from "../store/atom";
+import { userIDAtom } from "../../store/atom";
 import { useRecoilValue } from "recoil";
 import { getCookie } from "../../utils/auth";
 
