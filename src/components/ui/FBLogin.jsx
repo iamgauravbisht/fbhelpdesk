@@ -9,19 +9,18 @@ export default function FBLogin() {
     console.log(response);
     setAuthResponse(response.authResponse);
   }
+
   useEffect(() => {
     if (authResponse == {}) return;
-
     const FBAuth = async (response) => {
-      await fbAuth(response.userID).then((data) => {
+      await fbAuth(response.accessToken, response.userID).then((data) => {
         if (data.message === "success") {
           eraseCookie("fbtoken");
           setCookie("fbtoken", response.accessToken, response.expiresIn);
-          window.location.href = "/dashboard";
+          // window.location.href = "/dashboard";
         }
       });
     };
-
     FBAuth(authResponse);
   }, [authResponse]);
 
