@@ -13,16 +13,6 @@ export default function Conversation() {
         <img src={refresh} alt="refresh" className="cursor-pointer" />
       </div>
       <ConversationCard />
-      <ConversationCard />
-      <ConversationCard />
-      <ConversationCard />
-      <ConversationCard />
-      <ConversationCard />
-      <ConversationCard />
-      <ConversationCard />
-      <ConversationCard />
-      <ConversationCard />
-      <ConversationCard />
       <div className="w-full min-h-14 sm:hidden"></div>
     </div>
   );

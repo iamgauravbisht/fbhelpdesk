@@ -5,6 +5,7 @@ import {
   getDataFromLocalStorage,
   setDataInLocalStorage,
 } from "../../utils/storage";
+import { setCookie } from "../../utils/auth";
 
 const fbtoken = getCookie("fbtoken");
 
@@ -46,7 +47,8 @@ export default function ConnectFBPage() {
                 key={page.pageID}
                 onClick={() => {
                   setDataInLocalStorage("fbPageID", page.pageID);
-                  window.location.href = "/conversations";
+                  setCookie("fbPageToken", page.pageAccessToken, 0.5);
+                  window.location.href = "/dashboard";
                 }}
               >
                 {page.pageName}
