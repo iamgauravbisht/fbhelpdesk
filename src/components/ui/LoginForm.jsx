@@ -19,6 +19,7 @@ export default function Loginform() {
 
     const FBAuth = async (response) => {
       await fbAuth(response.accessToken, response.userID).then((data) => {
+        console.log(data);
         if (data.message === "success") {
           dispatch({ type: "SET_USERID", payload: response.userID });
           eraseCookie("fbtoken");
