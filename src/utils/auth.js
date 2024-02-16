@@ -99,6 +99,7 @@ export const fbAuth = async (access_token, userID) => {
     },
     body: JSON.stringify({
       userID: userID,
+      access_token: access_token,
     }),
   })
     .then((res) => res.json())
