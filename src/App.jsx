@@ -6,7 +6,6 @@ import FBLogin from "./components/ui/FBLogin";
 import Dashboard from "./components/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MyProvider } from "./store/provider";
-
 function App() {
   return (
     <MyProvider>

@@ -5,9 +5,6 @@ const initialState = {
   conversations: true,
   messages: false,
   profile: false,
-  userID: "",
-  fbPage: [],
-  fbPageID: "",
 };
 
 // Define the context
@@ -22,12 +19,6 @@ function reducer(state, action) {
       return { ...state, messages: action.payload };
     case "SET_PROFILE":
       return { ...state, profile: action.payload };
-    case "SET_USERID":
-      return { ...state, userID: action.payload };
-    case "SET_FBPAGE":
-      return { ...state, fbPage: action.payload };
-    case "SET_FBPAGEID":
-      return { ...state, fbPageID: action.payload };
     default:
       return state;
   }

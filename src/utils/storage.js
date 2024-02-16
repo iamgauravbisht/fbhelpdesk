@@ -7,8 +7,16 @@ const setDataInLocalStorage = (key, value) => {
 const removeFromLocalStorage = (key) => {
   localStorage.removeItem(key);
 };
+
+const setInitialData = () => {
+  setDataInLocalStorage("userID", "");
+  setDataInLocalStorage("fbPage", []);
+  setDataInLocalStorage("fbPageID", "");
+};
+
 export {
   getDataFromLocalStorage,
   setDataInLocalStorage,
   removeFromLocalStorage,
+  setInitialData,
 };

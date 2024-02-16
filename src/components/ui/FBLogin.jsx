@@ -1,11 +1,10 @@
 import { FacebookProvider, LoginButton } from "react-facebook";
 import { fbAuth, setCookie, eraseCookie } from "../../utils/auth";
 import { useEffect, useState } from "react";
-import { useMyContext } from "../../store/context";
+import { setDataInLocalStorage } from "../../utils/storage";
 
 export default function FBLogin() {
-  const { dispatch } = useMyContext();
-  const [authResponse, setAuthResponse] = useState({});
+  const [authResponse, setAuthResponse] = useState(null);
 
   function handleSuccess(response) {
     console.log(response);
@@ -17,7 +16,7 @@ export default function FBLogin() {
     const FBAuth = async (response) => {
       await fbAuth(response.accessToken, response.userID).then((data) => {
         if (data.message === "success") {
-          dispatch({ type: "SET_USERID", payload: response.userID });
+          setDataInLocalStorage("userID", response.userID);
           eraseCookie("fbtoken");
           setCookie("fbtoken", response.accessToken, response.expiresIn);
           window.location.href = "/dashboard";
@@ -25,7 +24,7 @@ export default function FBLogin() {
       });
     };
     FBAuth(authResponse);
-  }, [authResponse, dispatch]);
+  }, [authResponse]);
 
   function handleError(error) {
     console.log(error);

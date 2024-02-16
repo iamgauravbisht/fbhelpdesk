@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { FacebookProvider, LoginButton } from "react-facebook";
 import { fbAuth, signin, setCookie, eraseCookie } from "../../utils/auth";
-import { useMyContext } from "../../store/context";
+import { setInitialData, setDataInLocalStorage } from "../../utils/storage";
 
 export default function Loginform() {
-  const { dispatch } = useMyContext();
-
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [authResponse, setAuthResponse] = useState(null);
@@ -21,7 +19,7 @@ export default function Loginform() {
       await fbAuth(response.accessToken, response.userID).then((data) => {
         console.log(data);
         if (data.message === "success") {
-          dispatch({ type: "SET_USERID", payload: response.userID });
+          setDataInLocalStorage("userID", response.userID);
           eraseCookie("fbtoken");
           setCookie("fbtoken", response.accessToken, response.expiresIn);
           window.location.href = "/dashboard";
@@ -30,7 +28,7 @@ export default function Loginform() {
     };
 
     FBAuth(authResponse);
-  }, [authResponse, dispatch]);
+  }, [authResponse]);
 
   function handleError(error) {
     console.log(error);
@@ -54,6 +52,7 @@ export default function Loginform() {
   }
 
   useEffect(() => {
+    setInitialData();
     if (document.cookie.includes("token") && document.cookie.includes("fb")) {
       window.location.href = "/dashboard";
     }
