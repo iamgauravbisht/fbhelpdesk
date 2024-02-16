@@ -89,14 +89,6 @@ export const signin = async (email, password) => {
 export const signout = () => {
   eraseCookie("token");
 };
-// {
-//   accessToken: "EAARZC3bqKY7kBO4i87AoKctDemcl2NPkpUp181J8lKGSZCFHrWp2evDZA5IQqyI53tnZCQmpEpItZC1MBnekZCcu4L7oAlcmZBCftUgxwXUrZAAt5w34SYl6t1RFWZADny0VPZAZAH1nBjn21QyWlNA6XDMBpcAstsUUexDgUfSRCqzZCEbICcfrXxOjb4oZCLKAmHWGxo133yqFgXz9e1XXGEKhTmBjHzQZDZD";
-//   data_access_expiration_time: 1715797817;
-//   expiresIn: 5382;
-//   graphDomain: "facebook";
-//   signedRequest: "2NK-v6BFxvkoFbDNmdtIL1foYGVTMMV1wDwqtbiNSk0.eyJ1c2VyX2lkIjoiNzQwODYwMDcxMzQwNjMyIiwiY29kZSI6IkFRREZ1QW9vTjQyRzcxTGxFOHZkMUpPbTZWUC0xQlIzeDRrYWRaZkVQRVBHbUR1c2NLWlRyeEYxQmo3M2dTWTMxNExwZGlCUlpLcjg5TmI2NWw2ZXdRT2NsaGd3YXI4b2JNQ0ZJcUp4bFY5ZjhZZjBKcTNwYXlnSmlHRVBiNE5TN3k1Z3BpaF9GYUJ3S0lRd1gyUFZ5OVRab1pnWjA2d0FnRVpwOGZVRmJNck9za2xMSVZXQk5taEFYejhRVkFLT19wZWVxUDhnUkFkcUtrVml1MzRuVHlxWWpudTl6S0RCOUhsN3Vsc0FxN0Exd2pzdy1BcF9pUVE4QWE1aEFlaWxVMGx6bnhPVXFoNFA0MDlYYi1WbktOYU1YQkFNaEEtWjlIeWRINUxIODZsbmdYZGxHZ3h3aHUzYlc1bFpkNWgwREo0ZmNtbGJXTHVhYU55MTZIdFRxcHFRIiwiYWxnb3JpdGhtIjoiSE1BQy1TSEEyNTYiLCJpc3N1ZWRfYXQiOjE3MDgwMjE4MTh9";
-//   userID: "740860071340632";
-// }
 
 // fb auth
 export const fbAuth = async (userID) => {

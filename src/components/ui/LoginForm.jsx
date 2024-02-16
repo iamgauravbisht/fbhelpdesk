@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FacebookProvider, LoginButton } from "react-facebook";
-import { fbAuth, signin, setCookie } from "../../utils/auth";
+import { fbAuth, signin, setCookie, eraseCookie } from "../../utils/auth";
 
 export default function Loginform() {
   const [emailError, setEmailError] = useState("");
@@ -17,6 +17,7 @@ export default function Loginform() {
     const FBAuth = async (response) => {
       await fbAuth(response.userID).then((data) => {
         if (data.message === "success") {
+          eraseCookie("fbtoken");
           setCookie("fbtoken", response.accessToken, response.expiresIn);
           window.location.href = "/dashboard";
         }
