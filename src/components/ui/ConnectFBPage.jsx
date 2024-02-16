@@ -22,6 +22,7 @@ export default function ConnectFBPage() {
 
   useEffect(() => {
     async function AllPages() {
+      console.log(userID, "starting to call showallpages");
       const data = await showAllPages({
         userID: userID,
         access_token: fbtoken,
