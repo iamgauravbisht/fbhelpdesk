@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FacebookProvider, LoginButton } from "react-facebook";
 import { fbAuth, signin, setCookie, eraseCookie } from "../../utils/auth";
-import { setInitialData, setDataInLocalStorage } from "../../utils/storage";
+import { setDataInLocalStorage } from "../../utils/storage";
 
 export default function Loginform() {
   const [emailError, setEmailError] = useState("");
@@ -52,7 +52,6 @@ export default function Loginform() {
   }
 
   useEffect(() => {
-    setInitialData();
     if (document.cookie.includes("token") && document.cookie.includes("fb")) {
       window.location.href = "/dashboard";
     }
