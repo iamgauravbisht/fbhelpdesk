@@ -15,7 +15,7 @@ export default function Loginform() {
     if (authResponse == {}) return;
 
     const FBAuth = async (response) => {
-      await fbAuth(response.userID).then((data) => {
+      await fbAuth(response.accessToken, response.userID).then((data) => {
         if (data.message === "success") {
           eraseCookie("fbtoken");
           setCookie("fbtoken", response.accessToken, response.expiresIn);

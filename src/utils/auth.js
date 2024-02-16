@@ -91,7 +91,7 @@ export const signout = () => {
 };
 
 // fb auth
-export const fbAuth = async (userID) => {
+export const fbAuth = async (access_token, userID) => {
   return await fetch("http://localhost:3000/auth/fbauth", {
     method: "POST",
     headers: {
