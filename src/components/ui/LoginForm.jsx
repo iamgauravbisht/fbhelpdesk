@@ -20,7 +20,7 @@ export default function Loginform() {
     const FBAuth = async (response) => {
       await fbAuth(response.accessToken, response.userID).then((data) => {
         if (data.message === "success") {
-          setUserID(response.userID);
+          setUserID(() => response.userID);
           eraseCookie("fbtoken");
           setCookie("fbtoken", response.accessToken, response.expiresIn);
           window.location.href = "/dashboard";
