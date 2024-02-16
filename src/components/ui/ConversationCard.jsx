@@ -1,16 +1,13 @@
-import { messagesAtom, conversationsAtom, profileAtom } from "../../store/atom";
-import { useSetRecoilState } from "recoil";
+import { useMyContext } from "../../store/context";
 
 export default function ConversationCard() {
-  const setMessages = useSetRecoilState(messagesAtom);
-  const setConversations = useSetRecoilState(conversationsAtom);
-  const setProfile = useSetRecoilState(profileAtom);
+  const { dispatch } = useMyContext();
 
   const handleClick = () => {
     console.log("conversation clicked");
-    setConversations(false);
-    setProfile(false);
-    setMessages(true);
+    dispatch({ type: "SET_CONVERSATIONS", payload: false });
+    dispatch({ type: "SET_PROFILE", payload: false });
+    dispatch({ type: "SET_MESSAGES", payload: true });
   };
 
   return (

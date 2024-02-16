@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { FacebookProvider, LoginButton } from "react-facebook";
 import { fbAuth, signin, setCookie, eraseCookie } from "../../utils/auth";
-import { userIDAtom } from "../../store/atom";
-import { useSetRecoilState } from "recoil";
+import { useMyContext } from "../../store/context";
 
 export default function Loginform() {
+  const { dispatch } = useMyContext();
+
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [authResponse, setAuthResponse] = useState({});
-  const [userId, setUserId] = useState(null);
-  const setUsersID = useSetRecoilState(userIDAtom);
 
   function handleSuccess(response) {
     console.log(response);
@@ -21,7 +20,7 @@ export default function Loginform() {
     const FBAuth = async (response) => {
       await fbAuth(response.accessToken, response.userID).then((data) => {
         if (data.message === "success") {
-          setUserId(response.userID);
+          dispatch({ type: "SET_USER_ID", payload: response.userID });
           eraseCookie("fbtoken");
           setCookie("fbtoken", response.accessToken, response.expiresIn);
           window.location.href = "/dashboard";
@@ -30,13 +29,7 @@ export default function Loginform() {
     };
 
     FBAuth(authResponse);
-  }, [authResponse, setUserId]);
-
-  useEffect(() => {
-    if (userId) {
-      setUsersID(userId);
-    }
-  }, [setUsersID, userId]);
+  }, [authResponse, dispatch]);
 
   function handleError(error) {
     console.log(error);

@@ -3,11 +3,10 @@ import LeftMessage from "./LeftMessage";
 import RightMessage from "./RightMessage";
 import send from "../../assets/send.svg";
 import back from "../../assets/back.svg";
-import { profileAtom, conversationsAtom } from "../../store/atom";
-import { useSetRecoilState } from "recoil";
+import { useMyContext } from "../../store/context";
+
 export default function MessageBox() {
-  const setProfile = useSetRecoilState(profileAtom);
-  const setConversations = useSetRecoilState(conversationsAtom);
+  const { dispatch } = useMyContext();
 
   return (
     <div className="flex-1 flex flex-col min-w-[280px] relative overflow-y-scroll px-4">
@@ -18,13 +17,13 @@ export default function MessageBox() {
             src={back}
             alt="profile"
             className="cursor-pointer sm:hidden"
-            onClick={() => setConversations((c) => !c)}
+            onClick={() => dispatch({ type: "SET_MESSAGES", payload: false })}
           />
           <img
             src={profile}
             alt="profile"
             className="cursor-pointer"
-            onClick={() => setProfile((p) => !p)}
+            onClick={() => dispatch({ type: "SET_PROFILE", payload: true })}
           />
         </div>
       </div>

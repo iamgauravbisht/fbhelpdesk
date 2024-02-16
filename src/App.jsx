@@ -5,11 +5,11 @@ import LoginForm from "./components/ui/LoginForm";
 import FBLogin from "./components/ui/FBLogin";
 import Dashboard from "./components/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { RecoilRoot } from "recoil";
+import { MyProvider } from "./store/provider";
 
 function App() {
   return (
-    <RecoilRoot>
+    <MyProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginForm />} />
@@ -21,7 +21,7 @@ function App() {
           <Route path="/FBLogin" element={<FBLogin />} />
         </Routes>
       </BrowserRouter>
-    </RecoilRoot>
+    </MyProvider>
   );
 }
 
