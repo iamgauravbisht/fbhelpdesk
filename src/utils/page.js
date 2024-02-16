@@ -1,9 +1,13 @@
-export const showAllPages = async () => {
+export const showAllPages = async ({ userID, access_token }) => {
   return await fetch("http://localhost:3000/page/showallpages", {
-    method: "GET",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({
+      userID: userID,
+      access_token: access_token,
+    }),
   })
     .then((res) => res.json())
     .then((data) => {

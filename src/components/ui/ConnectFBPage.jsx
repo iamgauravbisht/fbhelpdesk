@@ -2,10 +2,16 @@ import { useEffect } from "react";
 import { showAllPages } from "../../utils/page";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { fbPageAtom, fbPageIDAtom } from "../../store/atom";
+import { userIDAtom } from "../store/atom";
+import { useRecoilValue } from "recoil";
+import { getCookie } from "../../utils/auth";
+
+const fbtoken = getCookie("fbtoken");
 
 export default function ConnectFBPage() {
   const [fbPage, setFBPage] = useRecoilState(fbPageAtom);
   const setFBPageID = useSetRecoilState(fbPageIDAtom);
+  const userID = useRecoilValue(userIDAtom);
 
   const goToDisconnectFBPage = () => {
     window.location.href = "/disconnectfbpage";
@@ -15,13 +21,15 @@ export default function ConnectFBPage() {
   };
 
   useEffect(() => {
-    showAllPages().then((data) => {
+    async function AllPages() {
+      const data = await showAllPages({ userID, access_token: fbtoken });
       console.log(data);
       if (data.message === "success") {
         setFBPage(data.pageDetails);
       }
-    });
-  }, [setFBPage]);
+    }
+    AllPages();
+  }, [setFBPage, userID]);
 
   return (
     <div className="w-screen h-screen flex justify-center items-center bg-blue-800 ">
