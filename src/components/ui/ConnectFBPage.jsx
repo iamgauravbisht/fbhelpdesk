@@ -11,7 +11,7 @@ const fbtoken = getCookie("fbtoken");
 export default function ConnectFBPage() {
   const [fbPage, setFBPage] = useRecoilState(fbPageAtom);
   const setFBPageID = useSetRecoilState(fbPageIDAtom);
-  const userID = useRecoilValue(userIDAtom);
+  let userID = useRecoilValue(userIDAtom);
 
   const goToDisconnectFBPage = () => {
     window.location.href = "/disconnectfbpage";
