@@ -17,7 +17,7 @@ export const profileAtom = atom({
 
 export const userIDAtom = atom({
   key: "userIDAtom",
-  default: null,
+  default: "",
 });
 
 export const fbPageAtom = atom({
@@ -27,5 +27,5 @@ export const fbPageAtom = atom({
 
 export const fbPageIDAtom = atom({
   key: "fbPageIDAtom",
-  default: null,
+  default: "",
 });
