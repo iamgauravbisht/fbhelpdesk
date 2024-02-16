@@ -8,14 +8,14 @@ export default function Loginform() {
 
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [authResponse, setAuthResponse] = useState({});
+  const [authResponse, setAuthResponse] = useState(null);
 
   function handleSuccess(response) {
     console.log(response);
     setAuthResponse(response.authResponse);
   }
   useEffect(() => {
-    if (authResponse == {}) return;
+    if (!authResponse) return;
 
     const FBAuth = async (response) => {
       await fbAuth(response.accessToken, response.userID).then((data) => {
