@@ -35,6 +35,7 @@ export const getConversations = async ({ pageID, fbPageToken }) => {
         pageID: pageID,
         pageAccessToken: fbPageToken,
       }),
+      mode: "cors",
     }
   )
     .then((res) => res.json())
