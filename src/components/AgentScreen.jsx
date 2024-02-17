@@ -4,14 +4,14 @@ import MessageBox from "./ui/MessageBox";
 import { useMyContext } from "../store/context";
 import { getConversations } from "../utils/page";
 import { useEffect, useState } from "react";
-import { getCokkie } from "../utils/auth";
+import { getCookie } from "../utils/auth";
 import { getDataFromLocalStorage } from "../utils/storage";
 
 export default function AgentScreen() {
   const { state } = useMyContext();
   const [c, setc] = useState();
   useEffect(() => {
-    const pageID = getCokkie("fbPageToken");
+    const pageID = getCookie("fbPageToken");
     const fbPageToken = getDataFromLocalStorage("fbPageID");
     if (!pageID || !fbPageToken) return;
 
