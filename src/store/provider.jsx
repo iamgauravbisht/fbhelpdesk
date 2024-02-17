@@ -5,6 +5,7 @@ const initialState = {
   conversations: true,
   messages: false,
   profile: false,
+  selectedConversation: null,
 };
 
 // Define the context
@@ -19,6 +20,8 @@ function reducer(state, action) {
       return { ...state, messages: action.payload };
     case "SET_PROFILE":
       return { ...state, profile: action.payload };
+    case "SET_SELECTED_CONVERSATION":
+      return { ...state, selectedConversation: action.payload };
     default:
       return state;
   }

@@ -4,14 +4,24 @@ import RightMessage from "./RightMessage";
 import send from "../../assets/send.svg";
 import back from "../../assets/back.svg";
 import { useMyContext } from "../../store/context";
+import { getDataFromLocalStorage } from "../../utils/storage";
 
 export default function MessageBox() {
-  const { dispatch } = useMyContext();
+  const { state, dispatch } = useMyContext();
+  const fbPageID = getDataFromLocalStorage("fbPageID");
+
+  const sender = state.selectedConversation?.participants.find(
+    (p) => p.id !== fbPageID
+  );
+
+  console.log("messages: ", state.selectedConversation?.messages);
 
   return (
     <div className="flex-1 flex flex-col min-w-[280px] relative overflow-y-scroll px-4">
       <div className="flex justify-between items-center  bg-white py-5 px-4 shadow-lg sticky top-0 z-10">
-        <h1 className="font-bold text-xl">Amit RG</h1>
+        <h1 className="font-bold text-xl">
+          {sender ? sender.name : "Amit RG"}
+        </h1>
         <div className="flex gap-3 justify-center items-center ">
           <img
             src={back}
@@ -44,18 +54,22 @@ export default function MessageBox() {
           <img src={send} alt="send" className="w-5 h-5 cursor-pointer" />
         </div>
       </div>
-      <LeftMessage />
-      <RightMessage />
-      <LeftMessage />
-      <RightMessage />
-      <LeftMessage />
-      <RightMessage />
-      <LeftMessage />
-      <RightMessage />
-      <LeftMessage />
-      <RightMessage />
-      <LeftMessage />
-      <RightMessage />
+      {state.selectedConversation?.messages?.length > 0 &&
+        state.selectedConversation?.messages.map((message) =>
+          message.from.id == sender.id ? (
+            <LeftMessage
+              key={message.id}
+              message={message}
+              name={sender.name}
+            />
+          ) : (
+            <RightMessage
+              key={message.id}
+              message={message}
+              name={message.from.name}
+            />
+          )
+        )}
       <div className="w-full min-h-32 sm:"></div>
     </div>
   );

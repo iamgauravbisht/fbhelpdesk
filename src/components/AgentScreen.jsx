@@ -32,24 +32,24 @@ export default function AgentScreen() {
       <div className="flex-1 flex md:hidden w-full ">
         {/* conversation component or message box component or profile component */}
         {state.conversations ? (
-          <Conversation />
+          <Conversation conversations={c} />
         ) : state.profile ? (
           <Profile />
         ) : state.messages ? (
           <MessageBox />
         ) : (
-          <Conversation />
+          <Conversation conversations={c} />
         )}
       </div>
       <div className="flex-1 hidden md:flex xl:hidden ">
         {/* conversation component */}
-        <Conversation />
+        <Conversation conversations={c} />
         {/* message box component or profile component */}
         {state.profile ? <Profile /> : state.messages ? <MessageBox /> : null}
       </div>
       <div className="flex-1 hidden  xl:flex w-full">
         {/* conversation component */}
-        <Conversation />
+        <Conversation conversations={c} />
         {/* message box component */}
         {state.messages ? <MessageBox /> : null}
         {/* profile component */}
