@@ -11,8 +11,8 @@ export default function AgentScreen() {
   const { state } = useMyContext();
   const [c, setc] = useState();
   useEffect(() => {
-    const pageID = getCookie("fbPageToken");
-    const fbPageToken = getDataFromLocalStorage("fbPageID");
+    const fbPageToken = getCookie("fbPageToken");
+    const pageID = getDataFromLocalStorage("fbPageID");
     if (!pageID || !fbPageToken) return;
 
     async function getConversation({ pageID, fbPageToken }) {
