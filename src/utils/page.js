@@ -1,6 +1,6 @@
 export const showAllPages = async ({ userID, access_token }) => {
   return await fetch(
-    "https://fbhelpdesk-90fffabb4baa.herokuapp.com/page/showallpages",
+    "http://localhost:3000/page/showallpages",
     {
       method: "POST",
       headers: {
@@ -25,7 +25,7 @@ export const showAllPages = async ({ userID, access_token }) => {
 
 export const getConversations = async ({ pageID, fbPageToken }) => {
   return await fetch(
-    "https://fbhelpdesk-90fffabb4baa.herokuapp.com/page/getconversations",
+    "http://localhost:3000/page/getconversations",
     {
       method: "POST",
       headers: {

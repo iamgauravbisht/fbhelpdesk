@@ -39,7 +39,7 @@ export function handleError(errorMsg) {
 }
 
 export const signup = async (username, email, password) => {
-  return await fetch("https://fbhelpdesk-90fffabb4baa.herokuapp.com/auth/signup", {
+  return await fetch("http://localhost:3000/auth/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export const signup = async (username, email, password) => {
     .catch((err) => console.log(err));
 };
 export const signin = async (email, password) => {
-  return await fetch("https://fbhelpdesk-90fffabb4baa.herokuapp.com/auth/signin", {
+  return await fetch("http://localhost:3000/auth/signin", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -92,7 +92,7 @@ export const signout = () => {
 
 // fb auth
 export const fbAuth = async (access_token, userID) => {
-  return await fetch("https://fbhelpdesk-90fffabb4baa.herokuapp.com/auth/fbauth", {
+  return await fetch("http://localhost:3000/auth/fbauth", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
