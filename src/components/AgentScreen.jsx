@@ -3,53 +3,53 @@ import Profile from "./ui/Profile";
 import MessageBox from "./ui/MessageBox";
 import { useMyContext } from "../store/context";
 import { getConversations } from "../utils/page";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getCookie } from "../utils/auth";
 import { getDataFromLocalStorage } from "../utils/storage";
 
 export default function AgentScreen() {
-  const { state } = useMyContext();
-  const [c, setc] = useState();
+  const { state, dispatch } = useMyContext();
   useEffect(() => {
     const fbPageToken = getCookie("fbPageToken");
     const pageID = getDataFromLocalStorage("fbPageID");
-    if (!pageID || !fbPageToken) return;
-
-    async function getConversation({ pageID, fbPageToken }) {
+    const userID = getDataFromLocalStorage("userID");
+    if (!pageID || !fbPageToken || !userID) return;
+    async function getConversation({ pageID, fbPageToken, userID }) {
       const conversations = await getConversations({
         pageID: pageID,
         fbPageToken: fbPageToken,
+        userID: userID,
       });
-      setc(conversations);
+      console.log("conversations: ", conversations);
+      dispatch({ type: "SET_ALL_CONVERSATIONS", payload: conversations });
     }
-    getConversation({ pageID, fbPageToken });
-  }, [state.pageID, state.fbPageToken]);
 
-  console.log("conversations :", c);
+    getConversation({ pageID, fbPageToken, userID });
+  }, [state.pageID, state.fbPageToken, dispatch]);
 
   return (
     <>
       <div className="flex-1 flex md:hidden w-full ">
         {/* conversation component or message box component or profile component */}
         {state.conversations ? (
-          <Conversation conversations={c} />
+          <Conversation conversations={state.allConversations} />
         ) : state.profile ? (
           <Profile />
         ) : state.messages ? (
           <MessageBox />
         ) : (
-          <Conversation conversations={c} />
+          <Conversation conversations={state.allConversations} />
         )}
       </div>
       <div className="flex-1 hidden md:flex xl:hidden ">
         {/* conversation component */}
-        <Conversation conversations={c} />
+        <Conversation conversations={state.allConversations} />
         {/* message box component or profile component */}
         {state.profile ? <Profile /> : state.messages ? <MessageBox /> : null}
       </div>
       <div className="flex-1 hidden  xl:flex w-full">
         {/* conversation component */}
-        <Conversation conversations={c} />
+        <Conversation conversations={state.allConversations} />
         {/* message box component */}
         {state.messages ? <MessageBox /> : null}
         {/* profile component */}

@@ -13,16 +13,18 @@ const Conversation = memo(function Conversation({ conversations }) {
         </div>
         <img src={refresh} alt="refresh" className="cursor-pointer" />
       </div>
-      {conversations ? (
-        conversations.map((conversation, i) => (
-          <ConversationCard
-            key={conversation.id + i}
-            conversation={conversation}
-          />
-        ))
-      ) : (
-        <ConversationCard />
-      )}
+      <div className="flex-1 flex-col w-full">
+        {conversations ? (
+          conversations.map((conversation, i) => (
+            <ConversationCard
+              key={conversation.id + i}
+              conversation={conversation}
+            />
+          ))
+        ) : (
+          <ConversationCard />
+        )}
+      </div>
       <div className="w-full min-h-14 sm:hidden"></div>
     </div>
   );

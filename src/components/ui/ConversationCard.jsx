@@ -37,15 +37,17 @@ export default function ConversationCard({ conversation }) {
     conversation?.messages[conversation?.messages?.length - 1]?.message ?? "";
 
   return (
-    <div className="py-3 px-4 flex-1 cursor-pointer" onClick={handleClick}>
+    <div className="py-3 px-4 w-full cursor-pointer " onClick={handleClick}>
       <div className="flex gap-3">
         <input type="checkbox" name="" id="" />
-        <div className="flex justify-between w-full ">
-          <div>
-            <h1 className="font-bold">{sender ? sender.name : "Amit RG"}</h1>
+        <div className="flex justify-between w-5/6">
+          <div className="w-3/4">
+            <h1 className="font-bold truncate overflow-hidden text-ellipsis ">
+              {sender ? sender.name : "Amit RG"}
+            </h1>
             <p className="text-sm font-bold">{conversation?.type}</p>
           </div>
-          <div>{displayTime}</div>
+          <div className="text-nowrap">{displayTime}</div>
         </div>
       </div>
       <div className="">
